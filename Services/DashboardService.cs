@@ -133,7 +133,7 @@ namespace BMS_API.Services
                             var trendingSkill = new TrendingSkillsDTO
                             {
                                 SkillId = (int)(reader["ActivityIDP"] != DBNull.Value ? Convert.ToInt32(reader["ActivityIDP"]) : (int?)null),
-                                SkillImage = reader["SkillImage"].ToString(),
+                                SkillImage = "https://BookMySkill/Upload/" + reader["SkillImage"].ToString(),
                                 SkillName = reader["SkillName"].ToString(),
                                 StartDateTime = reader["StartDateTime"].ToString(),
                                 Description = reader["Description"].ToString(),
@@ -142,11 +142,11 @@ namespace BMS_API.Services
                                 PricePerSession = reader["PricePerSession"] != DBNull.Value ? Convert.ToDouble(reader["PricePerSession"]) : (double?)null,
                                 RemainingSeats = reader["RemainingSeats"] != DBNull.Value ? Convert.ToInt32(reader["RemainingSeats"]) : (int?)null,
                                 //GalleryImage = ColumnExists(reader, "GalleryImage") ? reader["GalleryImage"]?.ToString() : null,
-                                ReviewText = ColumnExists(reader, "ReviewText") ? reader["ReviewText"]?.ToString() : null,
+                                ReviewText = ColumnExists(reader, "ReviewText") ? reader["ReviewText"]?.ToString() : "",
                                 Rating = (int?)(ColumnExists(reader, "Rating") ? (reader["Rating"] != DBNull.Value ? Convert.ToDouble(reader["Rating"]) : (double?)null) : null),
                                 PostDescription = ColumnExists(reader, "PostDescription") ? reader["PostDescription"]?.ToString() : null,
-                                Likes = ColumnExists(reader, "Likes") ? (reader["Likes"] != DBNull.Value ? Convert.ToInt32(reader["Likes"]) : (int?)null) : null,
-                                Dislikes = ColumnExists(reader, "Dislikes") ? (reader["Dislikes"] != DBNull.Value ? Convert.ToInt32(reader["Dislikes"]) : (int?)null) : null,
+                                Likes = ColumnExists(reader, "Likes") ? (reader["Likes"] != DBNull.Value ? Convert.ToInt32(reader["Likes"]) : (int?)null) : 0,
+                                Dislikes = ColumnExists(reader, "Dislikes") ? (reader["Dislikes"] != DBNull.Value ? Convert.ToInt32(reader["Dislikes"]) : (int?)null) : 0,
                                 StudentName = ColumnExists(reader, "StudentName") ? reader["StudentName"]?.ToString() : null,
                                 StudentImage = ColumnExists(reader, "StudentImage") ? reader["StudentImage"]?.ToString() : null,
                                 TotalConnection = ColumnExists(reader, "TotalConnection") ? (reader["TotalConnection"] != DBNull.Value ? Convert.ToInt32(reader["TotalConnection"]) : (int?)null) : null,
